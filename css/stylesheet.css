@@ -1,0 +1,100 @@
+@keyframes roundAndRound {
+  from {
+    transform: rotateY(360deg) rotateX(720deg) translateX(300px);
+  }
+  to {
+    transform: rotateY(-360deg) rotateX(-720deg) translateX(300px);
+  }  
+}
+
+@keyframes rgb {
+  from {
+    filter: drop-shadow(0 0 25px red);
+  }
+  50% {
+    filter: drop-shadow(0 0 25px chartreuse);
+  }
+  to {  
+    filter: drop-shadow(0 0 25px blue);
+  } 
+}
+
+*, 
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  display: grid;
+  place-content: center;
+
+  background-color: black;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.three-d-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 4px;
+  height: 400px;
+  width: 400px;
+
+  perspective: 800px;
+  perspective-origin: top right;
+}
+
+.cube {
+  position: relative;
+
+  width: 200px;
+  height: 200px;
+
+  transform-style: preserve-3d;
+  animation: roundAndRound 20s linear infinite;
+}
+
+.side {
+  position: absolute;
+
+  background: url('../imgs/roundC.png');
+  background-color: #fffce8;  
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  
+  animation: rgb 20s linear infinite;
+}
+
+.front {
+  transform: translateZ(100px);
+}
+
+.back {
+  transform: translateZ(-100px);
+}
+
+.right {
+  transform: rotateY(-90deg) translateZ(-100px);
+}
+
+.left {
+  transform: rotateY(90deg) translateZ(-100px);
+}
+
+.top {
+  transform: rotateX(90deg) translateZ(100px);
+}
+
+.bottom {
+  transform: rotateX(90deg) translateZ(-100px);
+}
